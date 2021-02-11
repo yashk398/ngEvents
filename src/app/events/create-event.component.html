@@ -1,0 +1,143 @@
+<div id="main">
+    <h1>New Event</h1>
+    <hr>
+    <div class="col-md-6">
+        <form>
+            <div class="form-group">
+              <label for="titleOfEvent">Title</label>
+              <input class="form-control" id="titleOfEvent" type="text" placeholder="Title of event">
+              <small id="Help" class="form-text text-muted">This is the name of the event. Make sure it is correct and unique.</small>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" placeholder="Date">
+                    </div>
+                    <div class="col">
+                        <label for="time">Time</label>
+                        <input type="time" class="form-control" id="time" placeholder="Time">
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Type of event</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Physical Meetup
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                          Virtual Event/Session
+                        </label>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="address">Address/Venue of the event</label>
+                        <input type="text" class="form-control" id="address" placeholder="block/building">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="City Name">
+                    </div>
+                    <div class="col">
+                        <label for="country">Country</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>Argentina</option>
+                            <option>Australia</option>
+                            <option>Bangladesh</option>
+                            <option>Canada</option>
+                            <option>China</option>
+                            <option>Czechia</option>
+                            <option>Denmark</option>
+                            <option>France</option>
+                            <option>Germany</option>
+                            <option>Hungary</option>
+                            <option>Iceland</option>
+                            <option>India</option>
+                            <option>Indonesia</option>
+                            <option>Israel</option>
+                            <option>Japan</option>
+                            <option>Luxembourg</option>
+                            <option>Mexico</option>
+                            <option>Netherlands</option>
+                            <option>New Zealand</option>
+                            <option>North Korea</option>
+                            <option>Pakistan</option>
+                            <option>Peru</option>
+                            <option>Philippines</option>
+                            <option>Portugal</option>
+                            <option>Russia</option>
+                            <option>Singapore</option>
+                            <option>South Korea</option>
+                            <option>Sri Lanka</option>
+                            <option>Sweden</option>
+                            <option>Thailand</option>
+                            <option>Turkey</option>
+                            <option>United Arab Emirates</option>
+                            <option>United Kingdom</option>
+                            <option>United States of America</option>
+                            <option>Venezuela</option>
+                            <option>Vietnam</option>
+                            <option>Yemen</option>
+                            <option>Zimbabwe</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <label for="titleOfEvent">Online Session URL</label>
+                        <input class="form-control" id="titleOfEvent" type="text" placeholder="Link to the online session">
+                        <small id="Help" class="form-text text-muted">Please provide a proper URL</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+              <label class="form-check-label" for="exampleCheck1">I accept the responsibility of adding this event to the list.</label>
+            </div>
+            <div class="row">
+                <div class="col col-md-2">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+                <div class="col col-md-2">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Cancel</button>
+                </div>
+            </div>
+          </form>
+    </div>
+</div>
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="color: black;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Quit without saving?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          All the data you entered will be lost if you <strong>Quit without saving</strong>. Do you want to quit?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink]="['/events/']" >Quit without saving</button>
+        </div>
+      </div>
+    </div>
+  </div>
