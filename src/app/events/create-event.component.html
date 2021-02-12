@@ -2,7 +2,7 @@
     <h1>New Event</h1>
     <hr>
     <div class="col-md-6">
-        <form>
+        <form onsubmit="#">
             <div class="form-group">
               <label for="titleOfEvent">Title</label>
               <input class="form-control" id="titleOfEvent" type="text" placeholder="Title of event">
@@ -23,30 +23,23 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Type of event</legend>
                     <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                        <label class="form-check-label" for="gridRadios1">
-                          Physical Meetup
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                        <label class="form-check-label" for="gridRadios2">
-                          Virtual Event/Session
-                        </label>
-                      </div>
+                         <div class="form-check form-switch">
+                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (click)=changevalue()>
+                             <label class="form-check-label" for="flexSwitchCheckDefault">Virtual Event</label>
+                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <br>
+                <div  *ngIf="meetup"  class="row">
                     <div class="col">
                         <label for="address">Address/Venue of the event</label>
                         <input type="text" class="form-control" id="address" placeholder="block/building">
                     </div>
+                   <br>
                 </div>
-                <br>
-                <div class="row">
+                <br *ngIf="meetup">
+                <div *ngIf="meetup" class="row">
                     <div class="col">
                         <label for="city">City</label>
                         <input type="text" class="form-control" id="city" placeholder="City Name">
@@ -95,9 +88,9 @@
                             <option>Zimbabwe</option>
                         </select>
                     </div>
+                   <hr>
                 </div>
-                <hr>
-                <div class="row">
+                <div *ngIf="!meetup" class="row">
                     <div class="col">
                         <label for="titleOfEvent">Online Session URL</label>
                         <input class="form-control" id="titleOfEvent" type="text" placeholder="Link to the online session">
@@ -120,7 +113,7 @@
           </form>
     </div>
 </div>
-    
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
