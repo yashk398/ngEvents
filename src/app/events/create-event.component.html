@@ -1,107 +1,117 @@
+ <!--#newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)"-->
 <div id="main">
     <h1>New Event</h1>
     <hr>
     <div class="col-md-6">
-        <form>
+        <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)">
             <div class="form-group">
-              <label for="titleOfEvent">Title</label>
-              <input class="form-control" id="titleOfEvent" type="text" placeholder="Title of event">
+              <label for="titleOfEvent">Name</label>
+              <input class="form-control" id="name" name= "name" (ngModel)="newEvent.titnamele" type="text" placeholder="Name of event">
               <small id="Help" class="form-text text-muted">This is the name of the event. Make sure it is correct and unique.</small>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col">
                         <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="Date">
+                        <input type="date" class="form-control" name= "date" (ngModel)="newEvent.date" id="date" placeholder="Date">
                     </div>
                     <div class="col">
                         <label for="time">Time</label>
-                        <input type="time" class="form-control" id="time" placeholder="Time">
+                        <input type="time" class="form-control" id="time" name= "time" (ngModel)="newEvent.time" placeholder="Time">
                     </div>
                 </div>
                 <hr>
+                <div class="row">
+                    <div class="col">
+                        <label for="price">Date</label>
+                        <input type="text" class="form-control" name= "price" (ngModel)="newEvent.price" id="price" placeholder="Price">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Type of event</legend>
                     <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                        <label class="form-check-label" for="gridRadios1">
-                          Physical Meetup
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                        <label class="form-check-label" for="gridRadios2">
-                          Virtual Event/Session
-                        </label>
-                      </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="address">Address/Venue of the event</label>
-                        <input type="text" class="form-control" id="address" placeholder="block/building">
+                         <div class="form-check form-switch">
+                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (click)=changevalue()>
+                             <label class="form-check-label" for="flexSwitchCheckDefault">Virtual Event</label>
+                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="City Name">
-                    </div>
-                    <div class="col">
-                        <label for="country">Country</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Argentina</option>
-                            <option>Australia</option>
-                            <option>Bangladesh</option>
-                            <option>Canada</option>
-                            <option>China</option>
-                            <option>Czechia</option>
-                            <option>Denmark</option>
-                            <option>France</option>
-                            <option>Germany</option>
-                            <option>Hungary</option>
-                            <option>Iceland</option>
-                            <option>India</option>
-                            <option>Indonesia</option>
-                            <option>Israel</option>
-                            <option>Japan</option>
-                            <option>Luxembourg</option>
-                            <option>Mexico</option>
-                            <option>Netherlands</option>
-                            <option>New Zealand</option>
-                            <option>North Korea</option>
-                            <option>Pakistan</option>
-                            <option>Peru</option>
-                            <option>Philippines</option>
-                            <option>Portugal</option>
-                            <option>Russia</option>
-                            <option>Singapore</option>
-                            <option>South Korea</option>
-                            <option>Sri Lanka</option>
-                            <option>Sweden</option>
-                            <option>Thailand</option>
-                            <option>Turkey</option>
-                            <option>United Arab Emirates</option>
-                            <option>United Kingdom</option>
-                            <option>United States of America</option>
-                            <option>Venezuela</option>
-                            <option>Vietnam</option>
-                            <option>Yemen</option>
-                            <option>Zimbabwe</option>
-                        </select>
-                    </div>
+                <div ngModelGroup="location">
+                     <div  *ngIf="meetup"  class="row">
+                         <div class="col">
+                             <label for="address">Address/Venue of the event</label>
+                             <input type="text" class="form-control" id="address" name= "address" (ngModel)="newEvent.address" placeholder="block/building">
+                         </div>
+                        <br>
+                     </div>
+                     <br *ngIf="meetup">
+                     <div *ngIf="meetup" class="row">
+                         <div class="col">
+                             <label for="city">City</label>
+                             <input type="text" class="form-control" id="city" name="city" (ngModel)="newEvent.city" placeholder="City Name">
+                         </div>
+                         <div class="col">
+                             <label for="country">Country</label>
+                             <select id="inputState" name="country" (ngModel)="newEvent.country" class="form-control">
+                                 <option selected>Choose...</option>
+                                 <option>Argentina</option>
+                                 <option>Australia</option>
+                                 <option>Bangladesh</option>
+                                 <option>Canada</option>
+                                 <option>China</option>
+                                 <option>Czechia</option>
+                                 <option>Denmark</option>
+                                 <option>France</option>
+                                 <option>Germany</option>
+                                 <option>Hungary</option>
+                                 <option>Iceland</option>
+                                 <option>India</option>
+                                 <option>Indonesia</option>
+                                 <option>Israel</option>
+                                 <option>Japan</option>
+                                 <option>Luxembourg</option>
+                                 <option>Mexico</option>
+                                 <option>Netherlands</option>
+                                 <option>New Zealand</option>
+                                 <option>North Korea</option>
+                                 <option>Pakistan</option>
+                                 <option>Peru</option>
+                                 <option>Philippines</option>
+                                 <option>Portugal</option>
+                                 <option>Russia</option>
+                                 <option>Singapore</option>
+                                 <option>South Korea</option>
+                                 <option>Sri Lanka</option>
+                                 <option>Sweden</option>
+                                 <option>Thailand</option>
+                                 <option>Turkey</option>
+                                 <option>United Arab Emirates</option>
+                                 <option>United Kingdom</option>
+                                 <option>United States of America</option>
+                                 <option>Venezuela</option>
+                                 <option>Vietnam</option>
+                                 <option>Yemen</option>
+                                 <option>Zimbabwe</option>
+                             </select>
+                         </div>
+                        <hr>
+                     </div>
                 </div>
-                <hr>
-                <div class="row">
+                <div *ngIf="!meetup" class="row">
                     <div class="col">
                         <label for="titleOfEvent">Online Session URL</label>
-                        <input class="form-control" id="titleOfEvent" type="text" placeholder="Link to the online session">
+                        <input class="form-control" id="titleOfEvent" name="url" (ngModel)="newEvent.url" type="text" placeholder="Link to the online session">
                         <small id="Help" class="form-text text-muted">Please provide a proper URL</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                         <br/>
+                        <label for="imageUrl">Image URL</label>
+                        <input class="form-control" id="imageUrl" name="imageUrl" (ngModel)="newEvent.imageUrl" type="text" pattern=".*\/.*.(png|jpg|svg|jpeg)" placeholder="img url for the event">
+                        <img/>
                     </div>
                 </div>
             </div>
@@ -120,7 +130,7 @@
           </form>
     </div>
 </div>
-    
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

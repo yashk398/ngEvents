@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventDetailsService } from '../services/event-details.service'
-import { ActivatedRoute } from '@angular/router' 
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
     selector: 'event-details',

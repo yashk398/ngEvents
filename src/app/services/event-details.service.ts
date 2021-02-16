@@ -10,6 +10,12 @@ export class EventDetailsService{
     getEvent(id:number){
         return eventList.find(event => event.id===id);
     }
+
+    saveEvent(event){
+         event.id=999
+         event.session = []
+         eventList.push(event)
+    }
 }
 
 const eventList = [
